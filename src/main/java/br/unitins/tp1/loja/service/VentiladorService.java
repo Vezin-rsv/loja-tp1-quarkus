@@ -17,5 +17,7 @@ public interface VentiladorService {
 
     Ventilador update(Long id, VentiladorRequestDTO dto);
 
+    Ventilador updateNomeImagem(Long id, String nomeImagem);
+
     void delete(Long id); 
 }

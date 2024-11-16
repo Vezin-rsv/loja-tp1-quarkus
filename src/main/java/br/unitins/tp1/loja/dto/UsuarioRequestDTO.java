@@ -7,7 +7,7 @@ import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public record ClienteRequestDTO(
+public record UsuarioRequestDTO(
     @NotBlank(message = "Não pode ser nulo")
     @Size(max = 100, message = "O campo nome deve conter no máximo 60 caracteres")
     String nome,
@@ -16,6 +16,7 @@ public record ClienteRequestDTO(
     String cpf,
     @PastOrPresent(message = "Deve haver coerência de data")
     LocalDate dataNascimento,
+    String nomeImagem,
     @NotBlank(message = "Não pode ser nulo")
     String username,
     @NotBlank(message = "Não pode ser nulo")

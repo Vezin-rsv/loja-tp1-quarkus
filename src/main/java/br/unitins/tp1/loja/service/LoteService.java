@@ -9,9 +9,9 @@ public interface LoteService {
 
     Lote findById(Long id);
 
-    List<Lote> findByNumero(Integer numero);
-
     Lote findByCodigo(String codigo);
+
+    Lote findByIdVentilador(Long idVentilador);
 
     List<Lote> findAll();
 
@@ -20,4 +20,5 @@ public interface LoteService {
     Lote update(Long id, LoteRequestDTO dto);
 
     void delete(Long id); 
+
 }

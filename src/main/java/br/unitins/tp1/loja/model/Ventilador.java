@@ -20,6 +20,8 @@ public class Ventilador extends DefaultEntity {
     @Column(length = 150, nullable = false)
     private String descricao;
 
+    private String nomeImagem;
+
     @Convert(converter = VoltagemConverter.class)
     @Column(nullable = false)
     private Voltagem voltagem;
@@ -35,10 +37,6 @@ public class Ventilador extends DefaultEntity {
     @ManyToOne
     @JoinColumn(name = "id_fabricante", nullable = false)
     private Fabricante fabricante;
-
-    @ManyToOne
-    @JoinColumn(name = "id_lote", nullable = false)
-    private Lote lote;
 
     @ManyToOne
     @JoinColumn(name = "id_fornecedor", nullable = false)
@@ -66,6 +64,14 @@ public class Ventilador extends DefaultEntity {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
     }
 
     public Voltagem getVoltagem() {
@@ -99,15 +105,6 @@ public class Ventilador extends DefaultEntity {
     public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
     }
-
-    public Lote getLote() {
-        return lote;
-    }
-
-    public void setLote(Lote lote) {
-        this.lote = lote;
-    }
-
 
     public Fornecedor getFornecedor() {
         return fornecedor;

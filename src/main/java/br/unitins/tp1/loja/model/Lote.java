@@ -4,10 +4,16 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Lote extends DefaultEntity{
 
+    @ManyToOne
+    @JoinColumn(name = "id_ventilador")
+    private Ventilador ventilador;
+    
     @Column(length = 60, nullable = false)
     private String codigo;
 
@@ -17,15 +23,12 @@ public class Lote extends DefaultEntity{
     @Column(nullable = false)
     private LocalDate dataFabricacao;
 
-    @Column(nullable = false)
-    private Integer numero;
-
-    public Integer getNumero() {
-        return numero;
+    public Ventilador getVentilador() {
+        return ventilador;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setVentilador(Ventilador ventilador) {
+        this.ventilador = ventilador;
     }
 
     public String getCodigo() {

@@ -1,5 +1,4 @@
 package br.unitins.tp1.loja.repository;
-import java.util.List;
 
 import br.unitins.tp1.loja.model.Lote;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
@@ -7,11 +6,33 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class LoteRepository implements PanacheRepository<Lote>{
-    public List<Lote> findByNumero(Integer numero) {
-        return find("numero LIKE ?1", "%" + numero + "%").list();
-    }
 
+    /**
+     * @return retorna o ventilador com o lote mais antigo e com quantidade maior que zero
+     */
+    public Lote findByIdVentilador(Long idVentilador) {
+        StringBuffer jpql = new StringBuffer();
+        jpql.append("SELECT ");
+        jpql.append("  l ");
+        jpql.append("FROM ");
+        jpql.append("  Lote l ");
+        jpql.append("WHERE ");
+        jpql.append("  l.ventilador.id = ?1 ");
+        jpql.append("  AND l.estoque > 0 ");
+        jpql.append("ORDER BY l.data ");
+
+        return find(jpql.toString(), idVentilador).firstResult();
+    }
+  
     public Lote findByCodigo(String codigo) {
-        return find("codigo = ?1", codigo).firstResult();
+        StringBuffer jpql = new StringBuffer();
+        jpql.append("SELECT ");
+        jpql.append("  l ");
+        jpql.append("FROM ");
+        jpql.append("  Lote l ");
+        jpql.append("WHERE ");
+        jpql.append("  l.codigo = ?1 ");
+
+        return find(jpql.toString(), codigo).firstResult();
     }
 }

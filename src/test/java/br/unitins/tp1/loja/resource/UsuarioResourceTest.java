@@ -10,28 +10,28 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import br.unitins.tp1.loja.dto.ClienteRequestDTO;
-import br.unitins.tp1.loja.model.Cliente;
-import br.unitins.tp1.loja.service.ClienteService;
+import br.unitins.tp1.loja.dto.UsuarioRequestDTO;
+import br.unitins.tp1.loja.model.Usuario;
+import br.unitins.tp1.loja.service.UsuarioService;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
 
 @QuarkusTest
-public class ClienteResourceTest {
+public class UsuarioResourceTest {
     @Inject
-    public ClienteService cService;
+    public UsuarioService cService;
    
     @Test
     public void testFindAll(){
         given()
-            .when().get("/clientes")
+            .when().get("/usuarios")
             .then().statusCode(200);
     }
 
     @Test
     public void testCreate(){
-        ClienteRequestDTO dto = new ClienteRequestDTO("Raquele", "11111111111", 
+        UsuarioRequestDTO dto = new UsuarioRequestDTO("Raquele", "11111111111", 
                                                     LocalDate.of(2005, 9, 22), 
                                             "raqueles", "quel@gmail.com", "123456");
 
@@ -39,7 +39,7 @@ public class ClienteResourceTest {
             .contentType(ContentType.JSON)
             .body(dto)
             .when()
-                .post("/clientes")
+                .post("/usuarios")
             .then()
                 .statusCode(201)
                 .body("id", notNullValue(),
@@ -57,25 +57,25 @@ public class ClienteResourceTest {
     @Test
     public void testUpdate() {
         // inserindo dado para alteracao (evitando a manipulacao de dados)
-        ClienteRequestDTO dto = 
-        new ClienteRequestDTO("teste", "77777777777", LocalDate.of(2000, 9, 15), 
+        UsuarioRequestDTO dto = 
+        new UsuarioRequestDTO("teste", "77777777777", LocalDate.of(2000, 9, 15), 
         "loll", "teste@gmail.com", "987654");
         
         long id = cService.create(dto).getId();
 
-        ClienteRequestDTO novoDto = 
-            new ClienteRequestDTO("teste rodando", "77777777777", LocalDate.of(2000, 9, 15), 
+        UsuarioRequestDTO novoDto = 
+            new UsuarioRequestDTO("teste rodando", "77777777777", LocalDate.of(2000, 9, 15), 
             "loll", "teste@gmail.com", "987654");
 
         given()
         .contentType(ContentType.JSON)
         .body(novoDto)
         .when()
-            .put("/clientes/"+id)
+            .put("/usuarios/"+id)
         .then()
             .statusCode(204);
 
-        Cliente c = cService.findById(id);
+        Usuario c = cService.findById(id);
 
         assertEquals(c.getUsername(), "loll");
 
@@ -87,20 +87,20 @@ public class ClienteResourceTest {
     @Test
     public void testDelete() {
         // inserindo dado para alteracao (evitando a manipulacao de dados)
-        ClienteRequestDTO dto = 
-        new ClienteRequestDTO("teste", "77777777777", LocalDate.of(2000, 9, 15), 
+        UsuarioRequestDTO dto = 
+        new UsuarioRequestDTO("teste", "77777777777", LocalDate.of(2000, 9, 15), 
         "loll", "teste@gmail.com", "987654");
         
         long id = cService.create(dto).getId();
 
         given()
         .when()
-            .delete("/clientes/"+id)
+            .delete("/usuarios/"+id)
         .then()
             .statusCode(204);
 
         // verificando se foi apagado no banco de dados
-        Cliente c = cService.findById(id);
+        Usuario c = cService.findById(id);
         assertNull(c);
     
     }

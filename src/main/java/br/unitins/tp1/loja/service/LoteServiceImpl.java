@@ -14,19 +14,22 @@ public class LoteServiceImpl implements LoteService{
     @Inject
     LoteRepository loteRepository;
 
+    @Inject
+    VentiladorService ventiladorService;
+
     @Override
     public Lote findById(Long id) {
         return loteRepository.findById(id);
     }
 
     @Override
-    public List<Lote> findByNumero(Integer numero) {
-        return loteRepository.findByNumero(numero);
+    public Lote findByCodigo(String codigo) {
+        return loteRepository.findByCodigo(codigo);
     }
 
     @Override
-    public Lote findByCodigo(String codigo) {
-        return loteRepository.findByCodigo(codigo);
+    public Lote findByIdVentilador(Long idVentilador) {
+        return loteRepository.findByIdVentilador(idVentilador);
     }
 
     @Override
@@ -38,12 +41,12 @@ public class LoteServiceImpl implements LoteService{
     @Transactional
     public Lote create(LoteRequestDTO dto) {
         Lote lote = new Lote();
+        lote.setVentilador(ventiladorService.findById(dto.idVentilador()));
         lote.setCodigo(dto.codigo());
         lote.setQuantidade(dto.quantidade());
         lote.setDataFabricacao(dto.dataFabricacao());
-        lote.setNumero(dto.numero());
         
-        loteRepository.persist(lote);
+        loteRepository.persist(lote); // salva o lote
         return lote;
     }
 
@@ -51,10 +54,11 @@ public class LoteServiceImpl implements LoteService{
     @Transactional
     public Lote update(Long id, LoteRequestDTO dto) {
         Lote lote = loteRepository.findById(id);
+
+        lote.setVentilador(ventiladorService.findById(dto.idVentilador()));
         lote.setCodigo(dto.codigo());
         lote.setQuantidade(dto.quantidade());
         lote.setDataFabricacao(dto.dataFabricacao());
-        lote.setNumero(dto.numero());
 
         return lote; // Retorne a entidade atualizada
     }

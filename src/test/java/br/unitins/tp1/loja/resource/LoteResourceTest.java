@@ -34,7 +34,7 @@ public class LoteResourceTest {
     @Test
     public void testCreate() {
         LoteRequestDTO dto = new LoteRequestDTO("JBYFTYT8977665", 300, 
-                                            LocalDate.of(2023, 10, 30), 20987);
+                                            LocalDate.of(2023, 10, 30), 1);
 
         given()
         .contentType(ContentType.JSON)
@@ -46,8 +46,7 @@ public class LoteResourceTest {
             .body("id", notNullValue(),
                   "codigo", is("JBYFTYT8977665"),
                   "quantidade", is(300),  // Corrigido para ser um número inteiro
-                  "dataFabricacao", is("2023-10-30"), 
-                  "numero", is(20987));
+                  "dataFabricacao", is("2023-10-30"));
 
         // Removendo o dado que foi inserido
         loService.delete(loService.findByCodigo("JBYFTYT8977665").getId());

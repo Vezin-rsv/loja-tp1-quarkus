@@ -1,50 +1,57 @@
 package br.unitins.tp1.loja.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario extends DefaultEntity{
-
-    @Column(length = 100, nullable = false, unique = true)
-    @NotEmpty(message = "O nome de usuário não pode estar vazio")
-    private String username;
-
-    @Column(length = 60, nullable = false)
-    @Email(message = "tem que ser um email válido")
-    private String enderecoEmail;
-
+public class Usuario extends Perfil {
+    
     @Column(length = 100, nullable = false)
-    @NotEmpty(message = "A senha não pode estar vazia")
-    private String senha;
+    @NotEmpty(message = "O nome não pode estar vazio")
+    private String nome;
 
-    public String getUsername() {
-        return username;
+    @Column(length = 11, nullable = false)
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter 11 dígitos")
+    private String cpf;
+
+    @Column(nullable = false)
+    private LocalDate dataNascimento;
+
+    private String nomeImagem;
+
+    public String getNome() {
+        return nome;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getEnderecoEmail() {
-        return enderecoEmail;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setEnderecoEmail(String enderecoEmail) {
-        this.enderecoEmail = enderecoEmail;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getSenha() {
-        return senha;
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
 }

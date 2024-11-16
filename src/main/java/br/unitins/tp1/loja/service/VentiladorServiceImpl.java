@@ -3,16 +3,8 @@ package br.unitins.tp1.loja.service;
 import java.util.List;
 import br.unitins.tp1.loja.dto.VentiladorRequestDTO;
 import br.unitins.tp1.loja.model.Cor;
-import br.unitins.tp1.loja.model.Fabricante;
-import br.unitins.tp1.loja.model.Fornecedor;
-import br.unitins.tp1.loja.model.Lote;
-import br.unitins.tp1.loja.model.Modelo;
 import br.unitins.tp1.loja.model.Ventilador;
 import br.unitins.tp1.loja.model.Voltagem;
-import br.unitins.tp1.loja.repository.FabricanteRepository;
-import br.unitins.tp1.loja.repository.LoteRepository;
-import br.unitins.tp1.loja.repository.FornecedorRepository;
-import br.unitins.tp1.loja.repository.ModeloRepository;
 import br.unitins.tp1.loja.repository.VentiladorRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -25,16 +17,13 @@ public class VentiladorServiceImpl implements VentiladorService{
     VentiladorRepository ventiladorRepository;
 
     @Inject
-    ModeloRepository modeloRepository;
+    ModeloService modeloService;
 
     @Inject
-    FabricanteRepository fabricanteRepository;
+    FabricanteService fabricanteService;
 
     @Inject
-    LoteRepository loteRepository;
-
-    @Inject
-    FornecedorRepository fornecedorRepository;
+    FornecedorService fornecedorService;
 
     @Override
     public Ventilador findById(Long id) {
@@ -61,34 +50,11 @@ public class VentiladorServiceImpl implements VentiladorService{
         ventilador.setDescricao(dto.descricao());
         ventilador.setVoltagem(Voltagem.valueOf(dto.idVoltagem()));
         ventilador.setCor(Cor.valueOf(dto.idCor()));
-    
-        // Obter o Modelo
-        Modelo modelo = modeloRepository.findById(dto.idModelo());
-        if (modelo == null) {
-            throw new IllegalArgumentException("não encontrado o MODELO com id: " + dto.idModelo());
-        }
-        ventilador.setModelo(modelo);
+        ventilador.setNomeImagem(dto.nomeImagem());
 
-        // Obter Fabricante
-        Fabricante fabricante = fabricanteRepository.findById(dto.idFabricante());
-        if (fabricante == null) {
-            throw new IllegalArgumentException("não encontrado o FABRICANTE com id: " + dto.idFabricante());
-        }
-        ventilador.setFabricante(fabricante);
-
-        // Obter Lote
-        Lote lote = loteRepository.findById(dto.idLote());
-        if (lote == null) {
-            throw new IllegalArgumentException("não encontrado o LOTE com id: " + dto.idLote());
-        }
-        ventilador.setLote(lote);
-
-        // Obter Fornecedor
-        Fornecedor fornecedor = fornecedorRepository.findById(dto.idFornecedor());
-        if (fornecedor == null) {
-            throw new IllegalArgumentException("não encontrado o FORNECEDOR com id: " + dto.idFornecedor());
-        }
-        ventilador.setFornecedor(fornecedor);
+        ventilador.setModelo(modeloService.findById(dto.idModelo()));
+        ventilador.setFabricante(fabricanteService.findById(dto.idFabricante()));
+        ventilador.setFornecedor(fornecedorService.findById(dto.idFornecedor()));
     
         ventiladorRepository.persist(ventilador);
         return ventilador;
@@ -103,37 +69,24 @@ public class VentiladorServiceImpl implements VentiladorService{
         ventilador.setDescricao(dto.descricao());
         ventilador.setVoltagem(Voltagem.valueOf(dto.idVoltagem()));
         ventilador.setCor(Cor.valueOf(dto.idCor()));
+        ventilador.setNomeImagem(dto.nomeImagem());
     
-        // Obter o Modelo
-        Modelo modelo = modeloRepository.findById(dto.idModelo());
-        if (modelo == null) {
-            throw new IllegalArgumentException("não encontrado o MODELO com id: " + dto.idModelo());
-        }
-        ventilador.setModelo(modelo);
-
-        // Obter Fabricante
-        Fabricante fabricante = fabricanteRepository.findById(dto.idFabricante());
-        if (fabricante == null) {
-            throw new IllegalArgumentException("não encontrado o FABRICANTE com id: " + dto.idFabricante());
-        }
-        ventilador.setFabricante(fabricante);
-
-        // Obter Lote
-        Lote lote = loteRepository.findById(dto.idLote());
-        if (lote == null) {
-            throw new IllegalArgumentException("não encontrado o LOTE com id: " + dto.idLote());
-        }
-        ventilador.setLote(lote);
-
-        // Obter Fornecedor
-        Fornecedor fornecedor = fornecedorRepository.findById(dto.idFornecedor());
-        if (fornecedor == null) {
-            throw new IllegalArgumentException("não encontrado o FORNECEDOR com id: " + dto.idFornecedor());
-        }
-        ventilador.setFornecedor(fornecedor);
+        ventilador.setModelo(modeloService.findById(dto.idModelo()));
+        ventilador.setFabricante(fabricanteService.findById(dto.idFabricante()));
+        ventilador.setFornecedor(fornecedorService.findById(dto.idFornecedor()));
     
         ventiladorRepository.persist(ventilador);
         return ventilador; // Retorne a entidade atualizada
+    }
+
+    @Override
+    @Transactional
+    public Ventilador updateNomeImagem(Long id, String nomeImagem) {
+        Ventilador ventilador = ventiladorRepository.findById(id);
+
+        ventilador.setNomeImagem(nomeImagem);
+        
+        return ventilador;
     }
 
     @Override

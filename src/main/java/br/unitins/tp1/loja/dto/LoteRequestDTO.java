@@ -17,5 +17,6 @@ public record LoteRequestDTO(
     @PastOrPresent(message = "Deve haver coerência de datas, sem datas no futuro")
     LocalDate dataFabricacao,
     @NotNull(message = "Não pode ser nulo")
-    Integer numero) {
+    Long idVentilador
+){
 }

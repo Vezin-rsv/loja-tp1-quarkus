@@ -15,9 +15,9 @@ public record VentiladorRequestDTO(
     String descricao, 
     Integer idVoltagem, 
     Integer idCor,
+    String nomeImagem,
     Long idModelo,
     Long idFabricante,
-    Long idLote,
     Long idFornecedor
     ) {
 

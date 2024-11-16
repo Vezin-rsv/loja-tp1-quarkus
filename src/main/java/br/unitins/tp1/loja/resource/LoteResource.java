@@ -33,12 +33,15 @@ public class LoteResource {
     }
 
     @GET
-    @Path("/search/{numero}")
-    public Response findByNumero(@PathParam("numero") Integer numero) {
-        return Response.ok(loteService.findByNumero(numero).
-                                    stream().
-                                    map(o -> LoteResponseDTO.valueOf(o)).
-                                    toList()).build();
+    @Path("/search/{codigo}")
+    public Response findByCodigo(@PathParam("codigo") String codigo) {
+        return Response.ok(LoteResponseDTO.valueOf(loteService.findByCodigo(codigo))).build();
+    }
+
+    @GET
+    @Path("/search/{id_ventilador}")
+    public Response findByIdVentilador(@PathParam("idVentilador") Long idVentilador) {
+        return Response.ok(LoteResponseDTO.valueOf(loteService.findByIdVentilador(idVentilador))).build();
     }
 
     @GET

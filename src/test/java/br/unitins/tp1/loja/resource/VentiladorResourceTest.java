@@ -33,7 +33,7 @@ public class VentiladorResourceTest {
     @Test
     public void testCreate(){
         VentiladorRequestDTO dto = new VentiladorRequestDTO("Ventilador Turbinado", 700.0, "Potente e silencioso", 
-                                    1, 1, 1l, 1l, 1l, 2l);
+                                    1, 1, 1l, 1l, 1l);
 
         Ventilador ventiCriado = given()
             .contentType(ContentType.JSON)
@@ -55,14 +55,14 @@ public class VentiladorResourceTest {
     public void testUpdate() {
         // inserindo dado para alteracao (evitando a manipulacao de dados)
         VentiladorRequestDTO dto = new VentiladorRequestDTO("Ventilador Turbinado", 700.0, "Potente e silencioso", 
-                                    1, 1, 1l, 1l, 1l, 1l);
+                                    1, 1, 1l, 1l, 1l);
         
         Ventilador createdVentilador = vService.create(dto);
         long id = createdVentilador.getId();
         assertNotNull(createdVentilador);
 
         VentiladorRequestDTO novoDto = new VentiladorRequestDTO("Ventilador Turbo", 700.0, "Potente e silencioso", 
-                                    1, 1, 1l, 1l, 1l, 1l);
+                                    1, 1, 1l, 1l, 1l);
 
         given()
         .contentType(ContentType.JSON)
@@ -85,7 +85,7 @@ public class VentiladorResourceTest {
     public void testDelete() {
         // inserindo dado para alteracao (evitando a manipulacao de dados)
         VentiladorRequestDTO dto = new VentiladorRequestDTO("Ventilador teste", 199.99, "Teste de exclusão", 
-                                    1, 1, 1l, 1l, 1l, 1l);
+                                    1, 1, 1l, 1l, 1l);
         
         long id = vService.create(dto).getId();
 
