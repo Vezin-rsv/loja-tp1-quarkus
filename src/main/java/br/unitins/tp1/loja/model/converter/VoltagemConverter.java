@@ -1,8 +1,8 @@
 package br.unitins.tp1.loja.model.converter;
 
+import br.unitins.tp1.loja.model.produto.Voltagem;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import br.unitins.tp1.loja.model.Voltagem;
 
 @Converter(autoApply = true)
 public class VoltagemConverter implements AttributeConverter<Voltagem, Integer>{

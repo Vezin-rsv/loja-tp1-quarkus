@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.loja.dto.VentiladorRequestDTO;
-import br.unitins.tp1.loja.model.Ventilador;
+import br.unitins.tp1.loja.model.produto.Ventilador;
 import br.unitins.tp1.loja.service.VentiladorService;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;

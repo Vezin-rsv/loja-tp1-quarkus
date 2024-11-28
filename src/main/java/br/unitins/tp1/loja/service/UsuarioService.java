@@ -1,7 +1,7 @@
 package br.unitins.tp1.loja.service;
 import java.util.List;
 
-import br.unitins.tp1.loja.model.Usuario;
+import br.unitins.tp1.loja.model.usuario.Usuario;
 
 
 public interface UsuarioService {
@@ -14,7 +14,7 @@ public interface UsuarioService {
 
     List<Usuario> findAll();
 
-    Usuario updateNomeImagem(Long id, String nomeImagem);
+    // Usuario updateNomeImagem(Long id, String nomeImagem);
 
     // Usuario create(UsuarioRequestDTO dto);
 

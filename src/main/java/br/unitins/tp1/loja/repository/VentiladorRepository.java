@@ -1,7 +1,7 @@
 package br.unitins.tp1.loja.repository;
 import java.util.List;
 
-import br.unitins.tp1.loja.model.Ventilador;
+import br.unitins.tp1.loja.model.produto.Ventilador;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

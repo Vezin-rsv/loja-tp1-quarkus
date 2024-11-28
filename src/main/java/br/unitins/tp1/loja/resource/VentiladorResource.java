@@ -5,9 +5,8 @@ import java.io.IOException;
 
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
-import br.unitins.tp1.loja.dto.VentiladorRequestDTO;
-import br.unitins.tp1.loja.dto.VentiladorResponseDTO;
-import br.unitins.tp1.loja.form.UsuarioImageForm;
+import br.unitins.tp1.loja.dto.produto.VentiladorRequestDTO;
+import br.unitins.tp1.loja.dto.produto.VentiladorResponseDTO;
 import br.unitins.tp1.loja.form.VentiladorImageForm;
 import br.unitins.tp1.loja.service.FileService;
 import br.unitins.tp1.loja.service.VentiladorService;

@@ -1,7 +1,7 @@
 package br.unitins.tp1.loja.model.converter;
+import br.unitins.tp1.loja.model.produto.Cor;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
-import br.unitins.tp1.loja.model.Cor;
 
 @Converter(autoApply = true)
 public class CorConverter implements AttributeConverter<Cor, Integer>{

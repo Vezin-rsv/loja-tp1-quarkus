@@ -1,6 +1,6 @@
 package br.unitins.tp1.loja.repository;
 
-import br.unitins.tp1.loja.model.Lote;
+import br.unitins.tp1.loja.model.produto.Lote;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 

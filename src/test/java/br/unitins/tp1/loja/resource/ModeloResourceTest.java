@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.loja.dto.ModeloRequestDTO;
-import br.unitins.tp1.loja.model.Modelo;
+import br.unitins.tp1.loja.model.produto.Modelo;
 import br.unitins.tp1.loja.service.ModeloService;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;

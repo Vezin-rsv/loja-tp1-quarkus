@@ -1,8 +1,8 @@
 package br.unitins.tp1.loja.resource;
 
 
-import br.unitins.tp1.loja.dto.LoteRequestDTO;
-import br.unitins.tp1.loja.dto.LoteResponseDTO;
+import br.unitins.tp1.loja.dto.produto.LoteRequestDTO;
+import br.unitins.tp1.loja.dto.produto.LoteResponseDTO;
 import br.unitins.tp1.loja.service.LoteService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

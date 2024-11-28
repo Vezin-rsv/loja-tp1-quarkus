@@ -1,10 +1,10 @@
 package br.unitins.tp1.loja.service;
 
 import java.util.List;
-import br.unitins.tp1.loja.dto.VentiladorRequestDTO;
-import br.unitins.tp1.loja.model.Cor;
-import br.unitins.tp1.loja.model.Ventilador;
-import br.unitins.tp1.loja.model.Voltagem;
+import br.unitins.tp1.loja.dto.produto.VentiladorRequestDTO;
+import br.unitins.tp1.loja.model.produto.Cor;
+import br.unitins.tp1.loja.model.produto.Ventilador;
+import br.unitins.tp1.loja.model.produto.Voltagem;
 import br.unitins.tp1.loja.repository.VentiladorRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

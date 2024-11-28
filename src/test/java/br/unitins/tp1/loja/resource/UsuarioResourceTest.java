@@ -11,8 +11,8 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 import br.unitins.tp1.loja.dto.UsuarioRequestDTO;
-import br.unitins.tp1.loja.model.Usuario;
-import br.unitins.tp1.loja.service.UsuarioService;
+import br.unitins.tp1.loja.model.usuario.Usuario;
+import br.unitins.tp1.loja.service.ClienteService;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
@@ -20,7 +20,7 @@ import jakarta.inject.Inject;
 @QuarkusTest
 public class UsuarioResourceTest {
     @Inject
-    public UsuarioService cService;
+    public ClienteService cService;
    
     @Test
     public void testFindAll(){

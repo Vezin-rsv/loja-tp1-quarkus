@@ -2,8 +2,8 @@ package br.unitins.tp1.loja.service;
 
 import java.util.List;
 
-import br.unitins.tp1.loja.dto.PedidoRequestDTO;
-import br.unitins.tp1.loja.model.Pedido;
+import br.unitins.tp1.loja.dto.pedido.PedidoRequestDTO;
+import br.unitins.tp1.loja.model.pedido.Pedido;
 
 public interface PedidoService {
 

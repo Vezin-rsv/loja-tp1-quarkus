@@ -1,8 +1,8 @@
 package br.unitins.tp1.loja.service;
 import java.util.List;
 
-import br.unitins.tp1.loja.dto.ModeloRequestDTO;
-import br.unitins.tp1.loja.model.Modelo;
+import br.unitins.tp1.loja.dto.produto.ModeloRequestDTO;
+import br.unitins.tp1.loja.model.produto.Modelo;
 
 
 public interface ModeloService {

@@ -1,7 +1,8 @@
 package br.unitins.tp1.loja.service;
 
 import java.util.List;
-import br.unitins.tp1.loja.model.Usuario;
+
+import br.unitins.tp1.loja.model.usuario.Usuario;
 import br.unitins.tp1.loja.repository.UsuarioRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -33,15 +34,15 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuarioRepository.listAll();
     }
 
-    @Override
-    @Transactional
-    public Usuario updateNomeImagem(Long id, String nomeImagem) {
-        Usuario usuario = usuarioRepository.findById(id);
+    // @Override
+    // @Transactional
+    // public Usuario updateNomeImagem(Long id, String nomeImagem) {
+    //     Usuario usuario = usuarioRepository.findById(id);
 
-        usuario.setNomeImagem(nomeImagem);
+    //     usuario.setNomeImagem(nomeImagem);
         
-        return usuario;
-    }
+    //     return usuario;
+    // }
 
     @Override
     @Transactional

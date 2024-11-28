@@ -1,8 +1,8 @@
 package br.unitins.tp1.loja.service;
 import java.util.List;
 
-import br.unitins.tp1.loja.dto.LoteRequestDTO;
-import br.unitins.tp1.loja.model.Lote;
+import br.unitins.tp1.loja.dto.produto.LoteRequestDTO;
+import br.unitins.tp1.loja.model.produto.Lote;
 
 
 public interface LoteService {

@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 import br.unitins.tp1.loja.dto.LoteRequestDTO;
-import br.unitins.tp1.loja.model.Lote;
+import br.unitins.tp1.loja.model.produto.Lote;
 import br.unitins.tp1.loja.service.LoteService;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
